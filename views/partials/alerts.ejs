@@ -1,0 +1,25 @@
+<% if(alerts.error) {%>
+  <% alerts.error.forEach(function(msg){ %>
+    <div class="row">
+      <div class="col s12">
+        <div class="card red lighten-3">
+          <div class="card-content white-text">
+            <span class="card-title">Error</span>
+            <p><%= msg %></p>
+          </div>
+          <div class="card-action white-text">
+            <p class="closeable">Close</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% }); %>
+<% } %>
+
+<script>
+  [...document.getElementsByClassName('closeable')].forEach(function(element){
+    element.addEventListener('click', function(){
+      document.getElementsByClassName('card')[0].style.display = 'none';
+    });
+  });
+</script>
