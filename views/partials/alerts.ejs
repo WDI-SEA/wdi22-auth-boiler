@@ -1,19 +1,37 @@
 <% if(alerts.error) {%>
-  <% alerts.error.forEach(function(msg){ %>
-    <div class="row">
-      <div class="col s12">
-        <div class="card red lighten-3">
-          <div class="card-content white-text">
-            <span class="card-title">Error</span>
+  <div class="row">
+    <div class="col s12">
+      <div class="card red lighten-2">
+        <div class="card-content white-text">
+          <span class="card-title">Error</span>
+          <% alerts.error.forEach(function(msg){ %>
             <p><%= msg %></p>
-          </div>
-          <div class="card-action white-text">
-            <p class="closeable">Close</p>
-          </div>
+          <% }); %>
+        </div>
+        <div class="card-action white-text">
+          <p class="closeable">Close</p>
         </div>
       </div>
     </div>
-  <% }); %>
+  </div>
+<% } %>
+
+<% if(alerts.success) {%>
+  <div class="row">
+    <div class="col s12">
+      <div class="card green lighten-4">
+        <div class="card-content green-text">
+          <span class="card-title">Success</span>
+          <% alerts.success.forEach(function(msg){ %>
+            <p><%= msg %></p>
+          <% }); %>
+        </div>
+        <div class="card-action white-text">
+          <p class="closeable">Close</p>
+        </div>
+      </div>
+    </div>
+  </div>
 <% } %>
 
 <script>

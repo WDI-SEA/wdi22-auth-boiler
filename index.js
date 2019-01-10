@@ -39,6 +39,10 @@ app.get('/', function(req, res){
   res.render('home');
 });
 
+app.get('/profile', function(req, res){
+  res.render('profile');
+});
+
 // Include any controllers we need
 app.use('/auth', require('./controllers/auth'));
 
