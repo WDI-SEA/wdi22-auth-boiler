@@ -48,4 +48,6 @@ app.use('/auth', require('./controllers/auth'));
 app.use('/profile', require('./controllers/profiles'));
 
 // Listen on a port
-app.listen(3000);
+app.listen(process.env.PORT || 3000, function(){
+  console.log('Hello world!');
+});
