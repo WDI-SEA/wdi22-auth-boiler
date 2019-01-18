@@ -12,8 +12,17 @@
     <div class="nav-wrapper">
       <a href="/" class="brand-logo"><i class="material-icons">cloud</i>Brandi</a>
       <ul class="right">
-        <li><a href="/auth/login">Login</a></li>
-        <li><a href="/auth/signup">Signup</a></li>
+        <% if(!user){%>
+          <li><a href="/auth/login">Login</a></li>
+          <li><a href="/auth/signup">Signup</a></li>
+        <% } else { %>
+          <% if(user.admin) { %>
+            <li><a href="/profile/admins">Admin Page</a></li>
+          <% } %>
+          <li><a href="/profile">Profile</a></li>
+          <li>Hello, <%= user.firstname %>!</li>
+          <li><a href="/auth/logout">Logout</a></li>
+        <% } %>
       </ul>
     </div>
   </nav>

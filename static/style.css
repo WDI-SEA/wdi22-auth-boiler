@@ -12,3 +12,8 @@ nav a {
 nav a:hover {
   color: chartreuse;
 }
+
+.profile {
+  max-width: 250px;
+  height: auto;
+}

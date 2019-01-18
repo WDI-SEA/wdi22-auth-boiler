@@ -6,6 +6,7 @@ var flash = require('connect-flash');
 var express = require('express');
 var layouts = require('express-ejs-layouts');
 var parser = require('body-parser');
+var passport = require('./config/passportConfig');
 var session = require('express-session');
 
 // Declare express app
@@ -27,10 +28,13 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Custom middleware - write data to locals
 app.use(function(req, res, next){
   res.locals.alerts = req.flash();
+  res.locals.user = req.user;
   next();
 });
 
@@ -39,12 +43,9 @@ app.get('/', function(req, res){
   res.render('home');
 });
 
-app.get('/profile', function(req, res){
-  res.render('profile');
-});
-
 // Include any controllers we need
 app.use('/auth', require('./controllers/auth'));
+app.use('/profile', require('./controllers/profiles'));
 
 // Listen on a port
 app.listen(3000);
